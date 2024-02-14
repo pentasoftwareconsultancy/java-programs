@@ -1,13 +1,28 @@
+import java.util.Scanner;
+
 public class Factorial {
-
     public static void main(String[] args) {
-        int number = 4;
-        int factorial = number;
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = (number - 1); i > 1; i--) {
-            factorial = factorial * i;
+        System.out.print("Enter a non-negative integer: ");
+        int num = scanner.nextInt();
+
+        if (num < 0) {
+            System.out.println("Please enter a non-negative integer.");
+        } else {
+            long factorial = calculateFactorial(num);
+            System.out.println("Factorial of " + num + " is: " + factorial);
         }
 
-        System.out.println("Factorial of " + number + " is " + factorial);
+        scanner.close();
+    }
+
+    // Function to calculate factorial
+    public static long calculateFactorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * calculateFactorial(n - 1);
+        }
     }
 }
